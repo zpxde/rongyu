@@ -1,4 +1,4 @@
-package cpm.zpx;
+package com.zpx;
 
 /**
  * Hello world!

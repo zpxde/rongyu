@@ -1,4 +1,4 @@
-package cpm.zpx.rongyu;
+package com.zpx.rongyu;
 
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;

@@ -1,4 +1,4 @@
-package cpm.zpx.rongyu;
+package com.zpx.rongyu;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.Text;
@@ -32,7 +32,7 @@ public class RongyuDriver {
 
         // 6 设置数据的输入路径和输出路径
         FileInputFormat.setInputPaths(job, new Path("D:\\shuju"));
-        FileOutputFormat.setOutputPath(job, new Path("D:\\hadoop\\output17"));
+        FileOutputFormat.setOutputPath(job, new Path("D:\\hadoop\\output21"));
 
         // 7 提交job
         boolean result = job.waitForCompletion(true);

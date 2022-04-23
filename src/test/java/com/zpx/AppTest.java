@@ -1,4 +1,4 @@
-package cpm.zpx;
+package com.zpx;
 
 import static org.junit.Assert.assertTrue;
 
