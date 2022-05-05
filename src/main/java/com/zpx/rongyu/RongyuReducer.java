@@ -24,7 +24,8 @@ public class RongyuReducer extends Reducer<Text, RongyuBean, Text, RongyuBean> {
                 ta = value.getTemper();
                 ft=value.getFirsttime();
                 lt=value.getLasttime();
-
+                outK=key;
+                fuzhi(ft,lt,ta,ha);
             } else if (Math.abs(value.getTemper()-ta)<3) {
                 ha=(value.getHumidity()+ha)/2;
                 ta=(value.getTemper()+ta)/2;
@@ -49,10 +50,19 @@ public class RongyuReducer extends Reducer<Text, RongyuBean, Text, RongyuBean> {
             }
 
         }
+
+
         context.write(outK,outV);
 
 
     }
+    public void fuzhi(long a,long b,long c,long d){
+        outV.setFirsttime(a);
+        outV.setLasttime(b);
+        outV.setTemper(c);
+        outV.setHumidity(d);
+    }
+
 
 
 }

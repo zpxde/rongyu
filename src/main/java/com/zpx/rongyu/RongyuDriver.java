@@ -5,10 +5,12 @@ import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+import org.apache.http.util.Args;
 
 import java.io.IOException;
 
 public class RongyuDriver {
+
     public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
 
         // 1 获取job
@@ -32,7 +34,7 @@ public class RongyuDriver {
 
         // 6 设置数据的输入路径和输出路径
         FileInputFormat.setInputPaths(job, new Path("D:\\shuju"));
-        FileOutputFormat.setOutputPath(job, new Path("D:\\hadoop\\output21"));
+        FileOutputFormat.setOutputPath(job, new Path("D:\\hadoop\\output29"));
 
         // 7 提交job
         boolean result = job.waitForCompletion(true);

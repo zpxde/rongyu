@@ -1,14 +1,21 @@
 package com.zpx.rongyu;
 
+import org.apache.commons.lang.SystemUtils;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
 import java.io.IOException;
+import java.util.Scanner;
 
-public class RongyuMapper extends Mapper<LongWritable, Text,Text, RongyuBean> {
+public class RongyuMapper extends Mapper<LongWritable, Text, Text, RongyuBean> {
     private Text outK = new Text();
-    private RongyuBean outV=new RongyuBean();
+    private RongyuBean outV = new RongyuBean();
+
+    private  Scanner sc = new Scanner(System.in);
+
+    String input = sc.next();
+
     @Override
     protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
         //1.获取一行
@@ -17,7 +24,7 @@ public class RongyuMapper extends Mapper<LongWritable, Text,Text, RongyuBean> {
         //2.切割
         String[] split = line.split("\t");
         //3.抓取想要的数据
-        String  riqi= split[0];
+        String riqi = split[0];
         String ft = split[1];
         String lt = split[2];
         String wd = split[3];
@@ -29,6 +36,8 @@ public class RongyuMapper extends Mapper<LongWritable, Text,Text, RongyuBean> {
         outV.setTemper(Long.parseLong(wd));
         outV.setHumidity(Long.parseLong(shd));
         //5.写出
-        context.write(outK,outV);
+        if (riqi.equals(input)) {
+            context.write(outK, outV);
+        }
     }
 }
