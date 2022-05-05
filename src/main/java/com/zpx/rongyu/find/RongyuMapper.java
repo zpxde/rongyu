@@ -1,6 +1,5 @@
-package com.zpx.rongyu;
+package com.zpx.rongyu.find;
 
-import org.apache.commons.lang.SystemUtils;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;

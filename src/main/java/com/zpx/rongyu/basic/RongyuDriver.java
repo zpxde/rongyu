@@ -1,11 +1,10 @@
-package com.zpx.rongyu;
+package com.zpx.rongyu.basic;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
-import org.apache.http.util.Args;
 
 import java.io.IOException;
 
@@ -34,7 +33,7 @@ public class RongyuDriver {
 
         // 6 设置数据的输入路径和输出路径
         FileInputFormat.setInputPaths(job, new Path("D:\\shuju"));
-        FileOutputFormat.setOutputPath(job, new Path("D:\\hadoop\\output29"));
+        FileOutputFormat.setOutputPath(job, new Path("D:\\hadoop\\output32"));
 
         // 7 提交job
         boolean result = job.waitForCompletion(true);

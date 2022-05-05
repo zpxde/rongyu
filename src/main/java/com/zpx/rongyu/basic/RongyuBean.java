@@ -1,4 +1,4 @@
-package com.zpx.rongyu;
+package com.zpx.rongyu.basic;
 
 import org.apache.hadoop.io.WritableComparable;
 
