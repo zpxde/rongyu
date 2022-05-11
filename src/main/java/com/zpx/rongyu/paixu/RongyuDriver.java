@@ -2,6 +2,7 @@ package com.zpx.rongyu.paixu;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.NullWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
@@ -22,14 +23,14 @@ public class RongyuDriver
         job.setMapperClass(RongyuMapper.class);
         job.setReducerClass(RongyuReducer.class);
 
-        job.setMapOutputKeyClass(Text.class);
-        job.setMapOutputValueClass(RongyuBean.class);
+        job.setMapOutputKeyClass(RongyuBean.class);
+        job.setMapOutputValueClass(NullWritable.class);
 
-        job.setOutputKeyClass(Text.class);
-        job.setOutputValueClass(RongyuBean.class);
+        job.setOutputKeyClass(RongyuBean.class);
+        job.setOutputValueClass(NullWritable.class);
 
-        FileInputFormat.setInputPaths(job, new Path(args[0]));
-        FileOutputFormat.setOutputPath(job, new Path(args[1]));
+        FileInputFormat.setInputPaths(job, new Path("D:\\hadoop\\data\\paixu"));
+        FileOutputFormat.setOutputPath(job, new Path("D:\\hadoop\\output16"));
 
         boolean result = job.waitForCompletion(true);
         System.exit(result ? 0 : 1);

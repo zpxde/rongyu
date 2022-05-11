@@ -17,6 +17,7 @@ public class RongyuReducer extends Reducer<Text, RongyuBean, Text, RongyuBean> {
         long ha = 0;
         long ft = 0;
         long lt = 0;
+        long nu=0;
 
         for (RongyuBean value : values) {
 
@@ -26,14 +27,18 @@ public class RongyuReducer extends Reducer<Text, RongyuBean, Text, RongyuBean> {
                 ft = value.getFirsttime();
                 lt = value.getLasttime();
 
-                fuzhi(key, ft, lt, ta, ha);
-            } else if (Math.abs(value.getTemper() - ta) < 3&&Math.abs(value.getHumidity()-ha)<3) {
+                nu=value.getNumb();
+
+                fuzhi(key, ft, lt, ta, ha,nu);
+            } else if (Math.abs(value.getTemper() - ta) < 3&&Math.abs(value.getHumidity()-ha)<3&&value.getNumb()==nu) {
                 ha = value.getHumidity() ;
                 ta = value.getTemper();
                 ft = value.getFirsttime();
                 lt = lt;
 
-                fuzhi(key, ft, lt, ta, ha);
+                nu=value.getNumb();
+
+                fuzhi(key, ft, lt, ta, ha,nu);
             } else {
                 context.write(outK, outV);
                 ha = value.getHumidity();
@@ -41,7 +46,9 @@ public class RongyuReducer extends Reducer<Text, RongyuBean, Text, RongyuBean> {
                 ft = value.getFirsttime();
                 lt = value.getLasttime();
 
-                fuzhi(key, ft, lt, ta, ha);
+                nu=value.getNumb();
+
+                fuzhi(key, ft, lt, ta, ha,nu);
             }
 
         }
@@ -50,12 +57,13 @@ public class RongyuReducer extends Reducer<Text, RongyuBean, Text, RongyuBean> {
 
     }
 
-    public void fuzhi(Text key, long ft, long lt, long ta, long ha) {
+    public void fuzhi(Text key, long ft, long lt, long ta, long ha,long nu) {
         outK = key;
         outV.setFirsttime(ft);
         outV.setLasttime(lt);
         outV.setTemper(ta);
         outV.setHumidity(ha);
+        outV.setNumb(nu);
     }
 
 

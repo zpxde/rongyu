@@ -1,4 +1,4 @@
-package com.zpx.rongyu.find;
+package com.zpx.rongyu.min;
 
 import org.apache.hadoop.io.WritableComparable;
 
@@ -6,26 +6,18 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-/**
- * 1.定义一个类实现writable接口
- * 2.重写序列化和反序列化方法
- * 3.重写空参构造
- * 4.tostring方法
- */
-public class RongyuBean implements WritableComparable<RongyuBean> {
-
+public class RongyuBean
+        implements WritableComparable<RongyuBean>
+{
     private long firsttime;
     private long lasttime;
     private long temper;
     private long humidity;
     private long numb;
 
-    //空参构造
-    public RongyuBean() {
-    }
-
-    public long getFirsttime() {
-        return firsttime;
+    public long getFirsttime()
+    {
+        return this.firsttime;
     }
 
     public void setFirsttime(long firsttime) {
@@ -33,7 +25,7 @@ public class RongyuBean implements WritableComparable<RongyuBean> {
     }
 
     public long getLasttime() {
-        return lasttime;
+        return this.lasttime;
     }
 
     public void setLasttime(long lasttime) {
@@ -41,7 +33,7 @@ public class RongyuBean implements WritableComparable<RongyuBean> {
     }
 
     public long getTemper() {
-        return temper;
+        return this.temper;
     }
 
     public void setTemper(long temper) {
@@ -49,7 +41,7 @@ public class RongyuBean implements WritableComparable<RongyuBean> {
     }
 
     public long getHumidity() {
-        return humidity;
+        return this.humidity;
     }
 
     public void setHumidity(long humidity) {
@@ -64,42 +56,38 @@ public class RongyuBean implements WritableComparable<RongyuBean> {
         this.numb = numb;
     }
 
-    @Override
-    public void write(DataOutput out) throws IOException {
-
-        out.writeLong(firsttime);
-        out.writeLong(lasttime);
-        out.writeLong(temper);
-        out.writeLong(humidity);
-        out.writeLong(numb);
+    public void write(DataOutput out)
+            throws IOException
+    {
+        out.writeLong(this.firsttime);
+        out.writeLong(this.lasttime);
+        out.writeLong(this.temper);
+        out.writeLong(this.humidity);
+        out.writeLong(this.numb);
     }
 
-
-    @Override
-    public void readFields(DataInput in) throws IOException {
-
+    public void readFields(DataInput in)
+            throws IOException
+    {
         this.firsttime = in.readLong();
         this.lasttime = in.readLong();
         this.temper = in.readLong();
         this.humidity = in.readLong();
         this.numb=in.readLong();
-
     }
 
-    @Override
-    public String toString() {
-        return
-                firsttime + "\t" + lasttime + "\t" + temper + "\t" + humidity + "\t" + numb;
+    public String toString()
+    {
+        return this.firsttime + "\t" + this.lasttime + "\t" + this.temper + "\t" + this.humidity + "\t" + numb;
     }
 
-    @Override
-    public int compareTo(RongyuBean o) {
+    public int compareTo(RongyuBean o)
+    {
         if (this.firsttime > o.firsttime)
             return 1;
-        else if (this.firsttime < o.firsttime) {
+        if (this.firsttime < o.firsttime) {
             return -1;
-        } else {
-            return 0;
         }
+        return 0;
     }
 }

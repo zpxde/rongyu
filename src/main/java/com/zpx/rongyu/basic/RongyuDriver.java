@@ -27,9 +27,8 @@ public class RongyuDriver
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(RongyuBean.class);
 
-        FileInputFormat.setInputPaths(job, new Path( "D:\\hadoop\\data"));
-        FileOutputFormat.setOutputPath(job, new Path("D:\\hadoop\\output10"));
-
+        FileInputFormat.setInputPaths(job, new Path("D:\\hadoop\\data\\yuanshishju"));
+        FileOutputFormat.setOutputPath(job, new Path("D:\\hadoop\\output21"));
         boolean result = job.waitForCompletion(true);
         System.exit(result ? 0 : 1);
     }

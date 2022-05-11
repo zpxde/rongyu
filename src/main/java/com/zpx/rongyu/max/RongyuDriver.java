@@ -1,11 +1,14 @@
-package com.zpx.rongyu.find;
-import java.io.IOException;
+package com.zpx.rongyu.max;
+
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+
+import java.io.IOException;
 
 public class RongyuDriver
 {
@@ -24,11 +27,10 @@ public class RongyuDriver
         job.setMapOutputValueClass(RongyuBean.class);
 
         job.setOutputKeyClass(Text.class);
-        job.setOutputValueClass(RongyuBean.class);
+        job.setOutputValueClass(LongWritable.class);
 
-        FileInputFormat.setInputPaths(job, new Path("D:\\hadoop\\data"));
-        FileOutputFormat.setOutputPath(job, new Path("D:\\hadoop\\output15"));
-
+        FileInputFormat.setInputPaths(job, new Path("D:\\hadoop\\data\\yssj"));
+        FileOutputFormat.setOutputPath(job, new Path("D:\\hadoop\\output11"));
         boolean result = job.waitForCompletion(true);
         System.exit(result ? 0 : 1);
     }

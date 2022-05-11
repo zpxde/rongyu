@@ -1,18 +1,17 @@
-package com.zpx.rongyu.basic;
+package com.zpx.rongyu.min;
 
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
 import java.io.IOException;
-import java.util.Scanner;
 
 public class RongyuMapper extends Mapper<LongWritable, Text, Text, RongyuBean>
 {
     private Text outK = new Text();
     private RongyuBean outV = new RongyuBean();
 
-    protected void map(LongWritable key, Text value, Mapper<LongWritable, Text, Text, RongyuBean>.Context context)
+    protected void map(LongWritable key, Text value, Context context)
             throws IOException, InterruptedException
     {
         String line = value.toString();

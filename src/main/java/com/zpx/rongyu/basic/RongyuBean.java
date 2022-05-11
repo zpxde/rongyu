@@ -12,6 +12,7 @@ public class RongyuBean
     private long lasttime;
     private long temper;
     private long humidity;
+    private long numb;
 
     public long getFirsttime()
     {
@@ -46,6 +47,14 @@ public class RongyuBean
         this.humidity = humidity;
     }
 
+    public long getNumb() {
+        return numb;
+    }
+
+    public void setNumb(long numb) {
+        this.numb = numb;
+    }
+
     public void write(DataOutput out)
             throws IOException
     {
@@ -53,6 +62,7 @@ public class RongyuBean
         out.writeLong(this.lasttime);
         out.writeLong(this.temper);
         out.writeLong(this.humidity);
+        out.writeLong(this.numb);
     }
 
     public void readFields(DataInput in)
@@ -62,11 +72,12 @@ public class RongyuBean
         this.lasttime = in.readLong();
         this.temper = in.readLong();
         this.humidity = in.readLong();
+        this.numb=in.readLong();
     }
 
     public String toString()
     {
-        return this.firsttime + "\t" + this.lasttime + "\t" + this.temper + "\t" + this.humidity;
+        return this.firsttime + "\t" + this.lasttime + "\t" + this.temper + "\t" + this.humidity + "\t" + numb;
     }
 
     public int compareTo(RongyuBean o)

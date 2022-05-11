@@ -28,12 +28,14 @@ public class RongyuMapper extends Mapper<LongWritable, Text, Text, RongyuBean> {
         String lt = split[2];
         String wd = split[3];
         String shd = split[4];
+        String num=split[5];
         //4.封装
         outK.set(riqi);
         outV.setFirsttime(Long.parseLong(ft));
         outV.setLasttime(Long.parseLong(lt));
         outV.setTemper(Long.parseLong(wd));
         outV.setHumidity(Long.parseLong(shd));
+        outV.setNumb(Long.parseLong(num));
         //5.写出
         if (riqi.equals(input)) {
             context.write(outK, outV);
