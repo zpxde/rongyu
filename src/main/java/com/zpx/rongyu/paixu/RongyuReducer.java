@@ -1,4 +1,4 @@
-package com.zpx.rongyu.basic;
+package com.zpx.rongyu.paixu;
 
 
 import org.apache.hadoop.io.Text;

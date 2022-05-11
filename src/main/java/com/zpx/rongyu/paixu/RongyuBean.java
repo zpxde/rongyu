@@ -1,9 +1,10 @@
-package com.zpx.rongyu.basic;
+package com.zpx.rongyu.paixu;
+
+import org.apache.hadoop.io.WritableComparable;
 
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
-import org.apache.hadoop.io.WritableComparable;
 
 public class RongyuBean
         implements WritableComparable<RongyuBean>
